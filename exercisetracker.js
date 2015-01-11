@@ -25,13 +25,12 @@ document.addEventListener("deviceready", function(){
 
 });
 
-
 var track_id = '';      // Name/ID of the exercise
 var watch_id = null;    // ID of the geolocation
 var tracking_data = []; // Array containing GPS position objects
 
 $("#startTracking_start").live('click', function(){
-    
+  
 	// Start tracking the User
     watch_id = navigator.geolocation.watchPosition(
     
@@ -66,8 +65,8 @@ $("#startTracking_stop").live('click', function(){
 	window.localStorage.setItem(track_id, JSON.stringify(tracking_data));
 
 	// Reset watch_id and tracking_data 
-	var watch_id = null;
-	var tracking_data = null;
+	watch_id = null;
+	tracking_data = [];
 
 	// Tidy up the UI
 	$("#track_id").val("").show();
@@ -76,12 +75,13 @@ $("#startTracking_stop").live('click', function(){
 
 });
 
+
 $("#home_clearstorage_button").live('click', function(){
 	window.localStorage.clear();
 });
 
 $("#home_seedgps_button").live('click', function(){
-	window.localStorage.setItem('Sample block', '[{"timestamp":1335700802000,"coords":{"heading":null,"altitude":null,"longitude":170.33488333333335,"accuracy":0,"latitude":-45.87475166666666,"speed":null,"altitudeAccuracy":null}},{"timestamp":1335700803000,"coords":{"heading":null,"altitude":null,"longitude":170.33481666666665,"accuracy":0,"latitude":-45.87465,"speed":null,"altitudeAccuracy":null}},{"timestamp":1335700804000,"coords":{"heading":null,"altitude":null,"longitude":170.33426999999998,"accuracy":0,"latitude":-45.873708333333326,"speed":null,"altitudeAccuracy":null}},{"timestamp":1335700805000,"coords":{"heading":null,"altitude":null,"longitude":170.33318333333335,"accuracy":0,"latitude":-45.87178333333333,"speed":null,"altitudeAccuracy":null}},{"timestamp":1335700806000,"coords":{"heading":null,"altitude":null,"longitude":170.33416166666666,"accuracy":0,"latitude":-45.871478333333336,"speed":null,"altitudeAccuracy":null}},{"timestamp":1335700807000,"coords":{"heading":null,"altitude":null,"longitude":170.33526833333332,"accuracy":0,"latitude":-45.873394999999995,"speed":null,"altitudeAccuracy":null}},{"timestamp":1335700808000,"coords":{"heading":null,"altitude":null,"longitude":170.33427333333336,"accuracy":0,"latitude":-45.873711666666665,"speed":null,"altitudeAccuracy":null}},{"timestamp":1335700809000,"coords":{"heading":null,"altitude":null,"longitude":170.33488333333335,"accuracy":0,"latitude":-45.87475166666666,"speed":null,"altitudeAccuracy":null}}]');
+	window.localStorage.setItem('Sample block2', '[{"timestamp":1335700002000,"coords":{"heading":null,"altitude":null,"longitude":17.33488333333335,"accuracy":0,"latitude":-45.87475166666666,"speed":null,"altitudeAccuracy":null}},{"timestamp":1335700003000,"coords":{"heading":null,"altitude":null,"longitude":17.33481666666665,"accuracy":0,"latitude":-45.87465,"speed":null,"altitudeAccuracy":null}},{"timestamp":1335700004000,"coords":{"heading":null,"altitude":null,"longitude":17.33426999999998,"accuracy":0,"latitude":-45.873708333333326,"speed":null,"altitudeAccuracy":null}},{"timestamp":1335700005000,"coords":{"heading":null,"altitude":null,"longitude":17.33318333333335,"accuracy":0,"latitude":-45.87178333333333,"speed":null,"altitudeAccuracy":null}},{"timestamp":1335700006000,"coords":{"heading":null,"altitude":null,"longitude":17.33416166666666,"accuracy":0,"latitude":-45.871478333333336,"speed":null,"altitudeAccuracy":null}},{"timestamp":1335700007000,"coords":{"heading":null,"altitude":null,"longitude":17.33526833333332,"accuracy":0,"latitude":-45.873394999999995,"speed":null,"altitudeAccuracy":null}},{"timestamp":1335700008000,"coords":{"heading":null,"altitude":null,"longitude":17.33427333333336,"accuracy":0,"latitude":-45.873711666666665,"speed":null,"altitudeAccuracy":null}},{"timestamp":1335700009000,"coords":{"heading":null,"altitude":null,"longitude":17.33488333333335,"accuracy":0,"latitude":-45.87475166666699,"speed":null,"altitudeAccuracy":null}}]');
 
 });
 
@@ -90,7 +90,7 @@ $('#history').live('pageshow', function () {
 	
 	// Count the number of entries in localStorage and display this information to the user
 	tracks_recorded = window.localStorage.length;
-	$("#tracks_recorded").html("<strong>" + tracks_recorded + "</strong> workout(s) recorded");
+	$("#tracks_recorded").html("<strong>" + tracks_recorded + "</strong> runs recorded");
 	
 	// Empty the list of recorded tracks
 	$("#history_tracklist").empty();
